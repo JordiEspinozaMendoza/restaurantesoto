@@ -19,7 +19,7 @@ formEdit.addEventListener("submit", function (e) {
   let http = new EditFood();
 
   http
-    .put("http://127.0.0.1:8000/api/foods/updateFood/", data)
+    .put(mainUrl+"api/foods/updateFood/", data)
     .then((data) => window.location.href = mainUrl+"foodList/")
     .catch((err) => console.log(err));
 });
@@ -36,7 +36,7 @@ inputImageUpdate.addEventListener("change", function () {
   formData.append("_id", idFood);
 
   sendImage
-    .put("http://127.0.0.1:8000/api/foods/updateImage/", formData, access)
+    .put(mainUrl+"api/foods/updateImage/", formData, access)
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });

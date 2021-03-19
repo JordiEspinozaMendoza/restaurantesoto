@@ -17,7 +17,7 @@ form.addEventListener("submit", function (e) {
   let http = new UploadFood();
 
   http
-    .post("http://127.0.0.1:8000/api/foods/uploadFood/", data)
+    .post(mainUrl+"api/foods/uploadFood/", data)
     .then((data) => window.location.href = mainUrl+"foodList/")
     .catch((err) => console.log(err));
 });
@@ -32,7 +32,7 @@ inputImage.addEventListener("change", function () {
   let access =  localStorage.getItem("access");
   
   sendImage
-    .post("http://127.0.0.1:8000/api/foods/uploadImage/", formData, access)
+    .post(mainUrl+"api/foods/uploadImage/", formData, access)
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });

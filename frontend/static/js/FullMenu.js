@@ -25,5 +25,5 @@ getAllFoods.onload = function () {
       } catch {}
     }
   };
-  getAllFoods.open("GET", "http://127.0.0.1:8000/api/foods/", true);
+  getAllFoods.open("GET", mainUrl+"api/foods/", true);
   getAllFoods.send();

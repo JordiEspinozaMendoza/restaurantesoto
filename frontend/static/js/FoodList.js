@@ -17,7 +17,7 @@ FoodListReq.onload = function () {
     var foodsList =
       "<tr><th>Nombre</th><th>Precio</th><th>Editar</th><th>Eliminar</th></tr>";
     for (var i = 0; i < responseObject.length; i++) {
-      url = "http://127.0.0.1:8000/editFood/" + responseObject[i].id;
+      url = mainUrl+"editFood/" + responseObject[i].id;
       foodsList += "<tr>";
       foodsList += "<td>" + responseObject[i].name + "</td>";
       foodsList += "<td>$ " + responseObject[i].price + "</td>";
@@ -43,7 +43,7 @@ FoodListReq.onload = function () {
             };
             let deleteFoodRequest = new DeleteFood();
             deleteFoodRequest
-              .delete("http://127.0.0.1:8000/api/foods/deleteFood/", data)
+              .delete(mainUrl+"api/foods/deleteFood/", data)
               .then((data) => (window.location.href = mainUrl + "foodList/"));
             FoodListReq.onload();
           }
@@ -53,7 +53,7 @@ FoodListReq.onload = function () {
   }
 };
 
-FoodListReq.open("GET", "http://127.0.0.1:8000/api/foods/", true);
+FoodListReq.open("GET", mainUrl+"api/foods/", true);
 FoodListReq.send();
 
 var buttonCreateFood = document.getElementById("buttonCreateFood");
@@ -62,9 +62,8 @@ try {
     const createFood = new CreateFood();
     let access = localStorage.getItem("access");
     createFood
-      .post("http://127.0.0.1:8000/api/foods/createFood/", access)
+      .post(mainUrl+"api/foods/createFood/", access)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
-      
   });
 } catch {}

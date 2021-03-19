@@ -10,7 +10,7 @@ formLogin.addEventListener("submit", function (e) {
   // console.log(data);
   let loginPost = new AccessToken();
   loginPost
-    .post("http://127.0.0.1:8000/api/users/login/", data)
+    .post(mainUrl+"api/users/login/", data)
     .then((data) => {
       window.location.href = mainUrl;
     })

@@ -108,7 +108,7 @@ class AccessToken {
     localStorage.setItem("access", resData.access);
     const userData = new Login();
     userData
-      .get("http://127.0.0.1:8000/api/users/profile/", resData.access)
+      .get(mainUrl+"api/users/profile/", resData.access)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
 
