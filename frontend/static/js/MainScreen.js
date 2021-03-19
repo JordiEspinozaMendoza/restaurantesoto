@@ -57,7 +57,7 @@ getFoods.onload = function () {
     } catch {}
   }
 };
-getFoods.open("GET", "http://127.0.0.1:8000/api/foods/", true);
+getFoods.open("GET", mainUrl+"api/foods/", true);
 getFoods.send();
 
 var navBar = document.getElementById("top");
