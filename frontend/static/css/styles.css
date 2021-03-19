@@ -824,8 +824,7 @@ nav ul li a {
     width: 100%;
   }
   #top .logo-page h1 {
-    font-size: 12px;
-    line-height: 49px;
+    display: none;
   }
 }
 
