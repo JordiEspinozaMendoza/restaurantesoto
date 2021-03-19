@@ -21,6 +21,7 @@
   background-color: green;
   color: white;
 }
+
 .clearfix {
   clear: both;
   float: none;
@@ -550,15 +551,18 @@ nav ul li a {
   #FoodUploadContainer .formContainer {
     width: auto;
     .buttonSubmit {
-      width: auto;
+      width: 50%;
     }
   }
   .header-intro {
     .header-info {
       .button {
-        width: 100%;
+        width: 50%;
       }
     }
+  }
+  .button {
+    width: 50%;
   }
   .header-intro .header-info {
     h1 {
@@ -676,6 +680,10 @@ nav ul li a {
 @media screen and (max-width: 556px) {
   .menu-item {
     width: 100%;
+  }
+  #top .logo-page h1{
+    font-size: 12px;
+    line-height: 49px;
   }
 }
 #logout {
