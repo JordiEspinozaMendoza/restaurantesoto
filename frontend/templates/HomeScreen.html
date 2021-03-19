@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="header-intro">
+    <div class="header-info">
+        <h1>Restaurante Soto</h1>
+        <span>No dejes para mañana lo que puedas comer hoy</span>
+        <a href="{% url 'menu' %}" class="button">
+            <span>Ver menú</span>
+        </a>
+    </div>
+</div>
+<h2 class="text">Aquí se come como en casa pero sin tener que lavar los platos.</h2>
+<section class="menu-entry" id="menu1">
+    <div class="menu-item">
+        <!-- Aquí se ingresarán los ultimos alimentos -->
+    </div>
+</section>
+<section>
+    <div class="promotion">
+        <h1>Barriga llena, corazón contento.</h1>
+    </div>
+</section>
+<div class="clearfix"></div>
+<section id = "topProductSection">
+
+</section>
+<div class="clearfix"></div>
+<div class="buttonContainer">
+<a href="{% url 'menu' %}" class="button">
+    <span>Ver menú completo</span>
+</a>
+</div>
+<div class="clearfix"></div>
+<div class="sliderContainer">
+    <h2>Disfruta de los mejores platillos</h2>
+    <div class="slideshow-container" id="sliderC">
+
+
+    </div>
+    <br>
+    <div style="text-align:center;">
+        <span class="dot" onclick = "currentSlide(1)"></span>
+        <span class="dot" onclick = "currentSlide(2)"></span>
+        <span class="dot" onclick = "currentSlide(3)"></span>
+    </div>
+
+</div>
+{% endblock content %}

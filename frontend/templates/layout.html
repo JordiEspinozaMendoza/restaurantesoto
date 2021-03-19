@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://kit.fontawesome.com/90e1cd8c52.js" crossorigin="anonymous"></script>
+    <title>Restaurante Soto</title>
+</head>
+<script>
+    const mainUrl = "http://127.0.0.1:8000/";
+</script>
+
+<body>
+    <div id="top">
+        <a href="{% url 'home' %}">
+        <div class="logo-page">
+            <img src="{% static 'img/restaurant.png' %}"height=50>
+            <h1>Restaurante Soto</h1>
+        </div>
+        </a>
+        <div class="containerNav">
+            <nav >
+                <input type="checkbox" id="nav" class="hidden">
+                <label for="nav" class="nav-btn">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </label>
+                <div class="nav-wrapper">
+                    <ul>
+
+                        <li class="li-item">
+                            <a href="{% url 'home' %}">Inicio</a>
+                        </li>
+
+                        <li class="li-item">
+                            <a href="{% url 'menu' %}">Menú</a>
+                        </li>
+
+                        <li id="login" class="li-item">
+                            <a href="{% url 'loginScreen' %}">Login</a>
+                        </li>
+
+                        <li class="admin li-item">
+                            <a href="{% url 'FoodList' %}">Editar</a>
+                        </li>
+                        
+                        <li class="admin li-item">
+                            <a id = "logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    {% block content %}
+      
+    {% endblock content %}
+    <div class="clearfix"></div>
+    <footer id = "footer">
+        <span>Jordi Espinoza &copy;</span>
+    </footer>
+</body>
+
+<script type="text/javascript" src="{% static 'js/Cookies.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/Classes.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/MainScreen.js' %}"></script>
+</html>

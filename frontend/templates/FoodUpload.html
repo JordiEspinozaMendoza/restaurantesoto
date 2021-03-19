@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+
+<div id="FoodUploadContainer">
+    <div class="formContainer">
+        <h1>Editar comida</h1>
+        <form method="POST" id ="foodUpload">
+            {% csrf_token %}
+            <div class="form-control">
+                <label for="name">Nombre </label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-control">
+                <label for="price">Precio </label>
+                <input type="text" name="price" required>
+            </div>
+
+            <div class="form-control">
+                <label for="description">Descripción </label>
+                <textarea name="description"></textarea>
+            </div>
+            <div class="form-control">
+                <label for="image">Imagen </label>
+                <input type="file" id="inputImage">
+            </div>
+            <input type="submit" class="buttonSubmit" value="Enviar">
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    //Guardamos al usuario en una variable global
+    var user = '{{request.user}}';
+</script>
+
+<script type="text/javascript" src="{% static 'js/FoodUpload.js' %}"></script>
+
+{% endblock content %}

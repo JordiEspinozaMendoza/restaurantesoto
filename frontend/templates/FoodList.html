@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<div id="FoodListContainer">
+
+    <div id="listContainer">
+        <h1>Lista de comidas</h1>
+        <table border="0" id="FoodListTable">
+
+        </table>
+    </div>
+    <a id="buttonCreateFood" href="{% url 'foodUploadScreen' %}">
+        <div class="btn-create">Crear comida</div>
+    </a>
+</div>
+<script type="text/javascript" src="{% static 'js/FoodList.js' %}"></script>
+
+{% endblock content %}
