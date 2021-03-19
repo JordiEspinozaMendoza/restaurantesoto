@@ -26,31 +26,36 @@ getFoods.onload = function () {
     var topFoodsContainer = document.getElementById("topProductSection");
     var topFoods = "";
     for (var index = 0; index < 4; index++) {
-      topFoods +=
-        '<div class="topProducts"> <div class="productInfo"> <h1>' +
-        responseObject[index].name +
-        "</h1><span>" +
-        responseObject[index].description +
-        '</span> <span class="price"> $' +
-        responseObject[index].price +
-        '</span></div> <div class="productImg"><img src = https://res.cloudinary.com/jordiespinoza/' +
-        responseObject[index].img +
-        " /></div></div>";
+      try{
+        topFoods +=
+          '<div class="topProducts"> <div class="productInfo"> <h1>' +
+          responseObject[index].name +
+          "</h1><span>" +
+          responseObject[index].description +
+          '</span> <span class="price"> $' +
+          responseObject[index].price +
+          '</span></div> <div class="productImg"><img src = https://res.cloudinary.com/jordiespinoza/' +
+          responseObject[index].img +
+          " /></div></div>";
+        
+      }catch{}
     }
 
     var sliderContainer = document.getElementById("sliderC");
     var myslides = "";
     var notImgUrl = "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=6&m=922962354&s=612x612&w=0&h=_KKNzEwxMkutv-DtQ4f54yA5nc39Ojb_KPvoV__aHyU=";
     for (let index = 0; index < 3; index++) {
-      myslides += `<div class="mySlides fade"> <div class="numbertext">${
-        index + 1
-      }/3</div> <img alt=${
-        responseObject[index].name
-      } src="https://res.cloudinary.com/jordiespinoza/${
-        responseObject[index].img ? responseObject[index].img : notImgUrl
-      }"   style="width:100%;"> <div class="textSlider">
-        ${responseObject[index].name}
-        </div> </div>`;
+      try{
+        myslides += `<div class="mySlides fade"> <div class="numbertext">${
+          index + 1
+        }/3</div> <img alt=${
+          responseObject[index].name
+        } src="https://res.cloudinary.com/jordiespinoza/${
+          responseObject[index].img ? responseObject[index].img : notImgUrl
+        }"   style="width:100%;"> <div class="textSlider">
+          ${responseObject[index].name}
+          </div> </div>`;
+      }catch{}
     }
     myslides += '<a onclick = "plusSlides(-1)" class="prev">&#10094;</a> <a onclick = "plusSlides(1)" class="next">&#10095;</a>';
     try {
