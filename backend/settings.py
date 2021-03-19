@@ -30,7 +30,7 @@ SECRET_KEY = '*j$f!!((8a4i&^&b)o@^lbmpglity_iu$98kt)tj^d4!myp$#i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "restaurantesoto.herokuapp.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -180,13 +180,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-MEDIA_ROOT = BASE_DIR / 'static/images'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 if os.getcwd() == '/app':
-    DEBUG = False
+    SECURE_PROXY_SSL_HEADER =('HTTP_X_FORWARDED_PROTO', 'https')
+
+    ALLOWED_HOSTS=["restaurantesoto.herokuapp.com"]
+    DEBUG =False
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
