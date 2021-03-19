@@ -41,8 +41,8 @@ inputImage.addEventListener("change", function () {
       responseMessage.innerHTML = `<span class = "message message-200">${data.detail}</span>`
     })
     .catch((err) => {
-      console.log(data);
+      console.log(err);
       let responseMessage = document.getElementById("responseMessage");
-      responseMessage.innerHTML = `<span class = "message message-400">${data.detail}</span>`
+      responseMessage.innerHTML = `<span class = "message message-400">${err.detail}</span>`
     });
 });
