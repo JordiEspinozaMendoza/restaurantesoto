@@ -30,7 +30,7 @@ SECRET_KEY = '*j$f!!((8a4i&^&b)o@^lbmpglity_iu$98kt)tj^d4!myp$#i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "restaurantesoto.herokuapp.com"]
 
 
 # Application definition
