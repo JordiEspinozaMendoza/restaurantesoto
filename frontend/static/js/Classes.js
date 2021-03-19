@@ -105,12 +105,20 @@ class AccessToken {
       body: JSON.stringify(data),
     });
     const resData = await response.json();
-    localStorage.setItem("access", resData.access);
-    const userData = new Login();
-    userData
-      .get(mainUrl+"api/users/profile/", resData.access)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    const status = await response.status;
+    if(status == 401){  
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-400">Estas claves no pertenecen a ningún usuario</span>`
+    }else{
+      localStorage.setItem("access", resData.access);
+      const userData = new Login();
+      userData
+        .get(mainUrl+"api/users/profile/", resData.access)
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+
+        window.location.href = mainUrl;
+    }
 
     return resData;
   }
