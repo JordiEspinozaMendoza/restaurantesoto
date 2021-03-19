@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*j$f!!((8a4i&^&b)o@^lbmpglity_iu$98kt)tj^d4!myp$#i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -188,7 +188,7 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER =('HTTP_X_FORWARDED_PROTO', 'https')
 
     ALLOWED_HOSTS=["restaurantesoto.herokuapp.com"]
-    DEBUG =False
+    DEBUG =True
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
