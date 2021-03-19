@@ -2,6 +2,25 @@
   font-family: "Montserrat";
   box-sizing: border-box;
 }
+.message{
+  width: 100%;
+  display: block;
+  margin: 15px 0;
+  padding: 10px 12px;
+  text-align: center;
+}
+.message-await{
+  background-color: #717171;
+  color: white;
+}
+.message-400{
+  background-color: red;
+  color: white;
+}
+.message-200{
+  background-color: green;
+  color: white;
+}
 .clearfix {
   clear: both;
   float: none;

@@ -24,6 +24,8 @@ form.addEventListener("submit", function (e) {
 
 var inputImage = document.getElementById("inputImage");
 inputImage.addEventListener("change", function () {
+  let responseMessage = document.getElementById("responseMessage");
+  responseMessage.innerHTML = `<span class = "message message-await">Subiendo imagen...</span>`
   let sendImage = new UploadImage();
   console.log(inputImage.files[0]);
 
@@ -33,6 +35,14 @@ inputImage.addEventListener("change", function () {
   
   sendImage
     .post(mainUrl+"api/foods/uploadImage/", formData, access)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => {
+      console.log(data);
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-200">${data.detail}</span>`
+    })
+    .catch((err) => {
+      console.log(data);
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-400">${data.detail}</span>`
+    });
 });

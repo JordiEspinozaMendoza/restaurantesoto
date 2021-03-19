@@ -21,10 +21,13 @@
                 <label for="description">Descripción </label>
                 <textarea name="description">{{food.description}}</textarea>
             </div>
+            
             <div class="form-control">
                 <label for="image">Imagen </label>
-                <input type="file" id="inputImageUpdate" value={{food.img.url}}>
+                <input type="file" id="inputImageUpdate">
             </div>
+            <div id="responseMessage"></div>
+
             <input type="submit" class="buttonSubmit" value="Enviar">
         </form>
     </div>

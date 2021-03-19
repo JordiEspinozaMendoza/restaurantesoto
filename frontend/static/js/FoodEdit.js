@@ -26,6 +26,9 @@ formEdit.addEventListener("submit", function (e) {
 
 var inputImageUpdate = document.getElementById("inputImageUpdate");
 inputImageUpdate.addEventListener("change", function () {
+  let responseMessage = document.getElementById("responseMessage");
+  responseMessage.innerHTML = `<span class = "message message-await">Subiendo imagen...</span>`
+
   let sendImage = new UpdateImage();
   let access =  localStorage.getItem("access");
 
@@ -37,6 +40,14 @@ inputImageUpdate.addEventListener("change", function () {
 
   sendImage
     .put(mainUrl+"api/foods/updateImage/", formData, access)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => {
+      console.log(data);
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-200">${data.detail}</span>`
+    })
+    .catch((err) => {
+      console.log(data);
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-400">${data.detail}</span>`
+    });
 });

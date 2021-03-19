@@ -9,8 +9,10 @@ getFoods.onload = function () {
     var menuContainer = document.getElementById("menu1");
     //Variable para almacenar los nuevos contenidos obtenidos del backend
     var newContent = "";
+
     for (var i = 0; i < 8; i++) {
       console.log(responseObject[i]);
+      try{
       newContent +=
         "<div class = 'menu-item'><div class='imgContainer'><img src = https://res.cloudinary.com/jordiespinoza/" +
         responseObject[i].img +
@@ -19,6 +21,7 @@ getFoods.onload = function () {
         "</h1><span>" +
         responseObject[i].description +
         "</span></div>";
+      }catch{}
     }
     var topFoodsContainer = document.getElementById("topProductSection");
     var topFoods = "";
@@ -37,13 +40,14 @@ getFoods.onload = function () {
 
     var sliderContainer = document.getElementById("sliderC");
     var myslides = "";
+    var notImgUrl = "https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=6&m=922962354&s=612x612&w=0&h=_KKNzEwxMkutv-DtQ4f54yA5nc39Ojb_KPvoV__aHyU=";
     for (let index = 0; index < 3; index++) {
       myslides += `<div class="mySlides fade"> <div class="numbertext">${
         index + 1
       }/3</div> <img alt=${
         responseObject[index].name
       } src="https://res.cloudinary.com/jordiespinoza/${
-        responseObject[index].img
+        responseObject[index].img ? responseObject[index].img : notImgUrl
       }"   style="width:100%;"> <div class="textSlider">
         ${responseObject[index].name}
         </div> </div>`;
