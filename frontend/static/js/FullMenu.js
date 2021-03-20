@@ -1,10 +1,11 @@
 var getAllFoods = new XMLHttpRequest();
-
+//Hacemos una llamada para obtener todas las comidas
 getAllFoods.onload = function () {
     if (getAllFoods.status == 200) {
       console.log("GET request success");
       responseObject = JSON.parse(getAllFoods.responseText);
-
+        
+        //Agregamos las comidas al menu
       var allProducts = document.getElementById("allProducts");
       var topFoods = "";
       for (var index = 0; index < responseObject.length; index++) {
@@ -21,9 +22,12 @@ getAllFoods.onload = function () {
       }
   
       try {
+          //Agregamos al html
         allProducts.innerHTML = topFoods;
       } catch {}
     }
   };
+
+//Hacemos la llaamda al back
   getAllFoods.open("GET", mainUrl+"api/foods/", true);
   getAllFoods.send();
