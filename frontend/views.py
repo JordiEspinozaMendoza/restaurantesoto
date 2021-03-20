@@ -18,7 +18,7 @@ def foodUploadScreen(request):
 
 def editFoodScreen(request, pk):
     food = Food.objects.get(id=pk)
-
+    
     context = {'food': food}
     return render(request, "EditFood.html", context)
 

@@ -10,7 +10,7 @@
             {% csrf_token %}
             <div class="form-control">
                 <label for="name">Nombre </label>
-                <input type="text" name="name" required value={{food.name}}>
+                <input type="text" name="name" required value="{{food.name}}">
             </div>
             <div class="form-control">
                 <label for="price">Precio </label>
