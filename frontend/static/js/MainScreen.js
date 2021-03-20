@@ -59,24 +59,28 @@ getFoods.onload = function () {
     }
     myslides += '<a onclick = "plusSlides(-1)" class="prev">&#10094;</a> <a onclick = "plusSlides(1)" class="next">&#10095;</a>';
     try {
+      //Actualizamos los valores de los contenedores con la informaccion del back
       menuContainer.innerHTML = newContent;
       topFoodsContainer.innerHTML = topFoods;
       sliderContainer.innerHTML = myslides;
+      //Mostramos los slides
       showSlides(1);
     } catch {}
   }
 };
+
+//Hacemos la llamada al backend
 getFoods.open("GET", mainUrl+"api/foods/", true);
 getFoods.send();
 
+//Barra de navegacion
 var navBar = document.getElementById("top");
-
+//Si la ventana se esta moviendo
 window.addEventListener("scroll", function () {
   navBar.classList.toggle("Iscrolling", window.scrollY > 0);
 });
 
-
-
+//Hacemos logout
 var logout = document.getElementById("logout");
 logout.addEventListener("click", function () {
   console.log("Logout");
@@ -85,6 +89,7 @@ logout.addEventListener("click", function () {
   window.location.reload();
 });
 
+//Si el usuario esta logueado correctamente agregamos las acciones a la barra de navegacion
 var adminActions = document.getElementsByClassName("admin");
 if (
   localStorage.getItem("access") == null &&
@@ -100,20 +105,23 @@ if (
   }
   document.getElementById("login").style.display = "none";
 }
-// Slider
-var slideIndex = 1;
+// Slider de la pagina
+var slideIndex = 1; //Indice del slider
 showSlides(slideIndex);
+//Funcion para mostrar slides
 function plusSlides(n) {
   showSlides((slideIndex += n));
 }
+//Elegimos que slide mostrar
 function currentSlide(n) {
   showSlides((slideIndex = n));
 }
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides = document.getElementsByClassName("mySlides"); //Seleccionamos los slides que existen (3)
+  var dots = document.getElementsByClassName("dot"); //Tomamos los dots
   try{
+    //Evaluamos el parametro n que nos ha llegado
     if (n > slides.length) {
       slideIndex = 1;
     }
@@ -126,6 +134,7 @@ function showSlides(n) {
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
+    //Activamos el slider que nos ha llegado
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
   }catch{}
