@@ -27,7 +27,14 @@ class UploadFood {
       body: JSON.stringify(data),
     });
     const resData = await response.json();
-    return resData;
+    let statusUpload = await response.status;
+    if(statusUpload == 500){  
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-400">No se ha subido el alimento</span>`
+    }else{
+      window.location.href = mainUrl+"foodList/"
+      return resData;
+    }
   }
 }
 
@@ -64,7 +71,6 @@ class UploadImage {
 
 class EditFood {
   async put(url, data) {
-    console.log(data)
     const response = await fetch(url, {
       method: "PUT",
       headers: {
@@ -75,7 +81,15 @@ class EditFood {
       body: JSON.stringify(data),
     });
     const resData = await response.json();
-    return resData;
+    let statusUpload = await response.status;
+    console.log(statusUpload);
+    if(statusUpload == 500){  
+      let responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerHTML = `<span class = "message message-400">No se ha subido el alimento</span>`
+    }else{
+      window.location.href = mainUrl+"foodList/"
+      return resData;
+    }
   }
 }
 class UpdateImage {

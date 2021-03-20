@@ -21,33 +21,42 @@ def getFoods(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def updateFood(request):
-    data = request.data
-    print(data)
+    try:
+        data = request.data
+        print(data)
 
-    food = Food.objects.all().last()
+        food = Food.objects.all().last()
 
-    food.name = data['name']
-    food.description = data['description']
-    food.price = data['price']
+        food.name = data['name']
+        food.description = data['description']
+        food.price = data['price']
 
-    food.save()
-    serializer = FoodSerializer(food, many=False)
-    return Response("Alimento subido correctamente")
+        food.save()
+        serializer = FoodSerializer(food, many=False)
+        return Response("Alimento subido correctamente")
+    except:
+        content = {'detail': "Alimento no subido correctamente"}
+        return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateFoodWithId(request):
-    data = request.data
-    food = Food.objects.get(id=data['_id'])
+    try:
+        data = request.data
+        food = Food.objects.get(id=data['_id'])
 
-    food.name = data['name']
-    food.description = data['description']
-    food.price = data['price']
+        food.name = data['name']
+        food.description = data['description']
+        food.price = data['price']
 
-    food.save()
-    serializer = FoodSerializer(food, many=False)
-    return Response("Alimento subido correctamente")
+        food.save()
+        serializer = FoodSerializer(food, many=False)
+        content = {'detail': "Alimento subido correctamente"}
+        return Response(content, status=status.HTTP_200_OK)
+    except:
+        content = {'detail': "Alimento no subido correctamente"}
+        return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['POST'])
@@ -96,6 +105,7 @@ def updateImage(request):
         content = {'detail': "Imagen no actualizada correctamente"}
 
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])

@@ -5,6 +5,8 @@ if(localStorage.getItem("access") == null && localStorage.getItem("userInfo")==n
 let form = document.getElementById("foodUpload");
 
 form.addEventListener("submit", function (e) {
+  let responseMessage = document.getElementById("responseMessage");
+  responseMessage.innerHTML = `<span class = "message message-await">Subiendo comida...</span>`
   e.preventDefault();
   let access =  localStorage.getItem("access");
 
@@ -18,7 +20,7 @@ form.addEventListener("submit", function (e) {
 
   http
     .post(mainUrl+"api/foods/uploadFood/", data)
-    .then((data) => window.location.href = mainUrl+"foodList/")
+    .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });
 
