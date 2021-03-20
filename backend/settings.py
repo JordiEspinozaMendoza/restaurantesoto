@@ -124,7 +124,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'restaurantesoto',
         'USER': 'soto',
-        'PASSWORD': 'restaurantesoto',
+        'PASSWORD': os.environ.get('PASSWORDDB'),
         'HOST': 'restaurantesoto.czfen8ork2lf.us-west-2.rds.amazonaws.com',
         'PORT': '5432'
     }
