@@ -2,15 +2,16 @@ if (
   localStorage.getItem("access") == null &&
   localStorage.getItem("userInfo") == null
 ) {
-  window.location.href = mainUrl;
+  window.location.href = mainUrl; //Si el usuario no ha hecho login
 }
 
+//Llamada para obtener toda la comida
 var FoodListReq = new XMLHttpRequest();
 FoodListReq.onload = function () {
   if (FoodListReq.status == 200) {
     console.log("GET request success");
     responseObject = JSON.parse(FoodListReq.responseText);
-
+    //Agregamos en la tabla
     var menuContainer = document.getElementById("menu1");
     var FoodListTable = document.getElementById("FoodListTable");
     //Variable para almacenar los nuevos contenidos obtenidos del backend
@@ -31,7 +32,7 @@ FoodListReq.onload = function () {
     }
     try {
       FoodListTable.innerHTML = foodsList;
-
+      //Agregamos un evento de eliminacion para cada comida
       var deleteFoodsBtns = document.getElementsByClassName("deleteFood");
       for (let index = 0; index < deleteFoodsBtns.length; index++) {
         deleteFoodsBtns[index].addEventListener("click", function () {
@@ -41,6 +42,7 @@ FoodListReq.onload = function () {
               _id: deleteFoodsBtns[index].getAttribute("data-food"),
               token: access,
             };
+            //Hacemos la llamada al backend
             let deleteFoodRequest = new DeleteFood();
             deleteFoodRequest
               .delete(mainUrl+"api/foods/deleteFood/", data)
@@ -56,11 +58,13 @@ FoodListReq.onload = function () {
 FoodListReq.open("GET", mainUrl+"api/foods/", true);
 FoodListReq.send();
 
+//Metodo click para el boton de creacion de comida
 var buttonCreateFood = document.getElementById("buttonCreateFood");
 try {
   buttonCreateFood.addEventListener("click", function () {
     const createFood = new CreateFood();
     let access = localStorage.getItem("access");
+    //Llamamos al back
     createFood
       .post(mainUrl+"api/foods/createFood/", access)
       .then((data) => console.log(data))
