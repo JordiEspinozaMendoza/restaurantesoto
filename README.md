@@ -1,4 +1,5 @@
 # Restaurante Soto
+[Link al sitio web](https://restaurantesoto.herokuapp.com/)
 
 Aplicación web para el batch21 basada en un restaurante ficticio de nombre 'Soto'
 
@@ -11,6 +12,8 @@ La API cuenta con 8 ENDPOINTS en los que se encuentran del tipo:
 * GET
 * DELETE
 
-El administrador o jefe del restaurante puede subir las comidas que desee solamente haciendo login y entrando a la pagina de edición, además de esto puede editar los datos e imágenes de las comidas e incluso puede eliminarlas
+El administrador o jefe del restaurante puede subir las comidas que desee solamente haciendo login y entrando a la pagina de edición, además de esto puede editar los datos e imágenes de las comidas e incluso puede eliminarlas.
 
-Se cuenta con una base de datos postgreSQL en AWS, mientras que las imágenes de las comidas son almacenadas en Clodinary
+Se cuenta con una base de datos postgreSQL en AWS, mientras que las imágenes de las comidas son almacenadas en Cloudinary.
+
+La app fue desplegada en Heroku.
